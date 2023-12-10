@@ -10,7 +10,7 @@ function UserDetails() {
   const [user, setUser] = useState(null);
   const [likes, setLikes] = useState([]);
   const [titles, setTitles] = useState([]);
-  // const [currentUser, setCurrentUser] = useState(null); // [1
+  // const [currentUser, setCurrentUser] = useState(null); //
   //const { currentUser } = useSelector((state) => state.userReducer);
   const { id } = useParams();
   const fetchLikes = async () => {

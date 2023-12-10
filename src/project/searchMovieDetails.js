@@ -122,14 +122,24 @@ function SearchMovieDetails() {
             )}
             <h2>Likes</h2>
             <ul className="list-group">
-              {likes.map((like, index) => (
-                <li key={index} className="list-group-item">
-                  {like.user.firstName} {like.user.lastName}
-                  <Link to={`/project/users/${like.user._id}`}>
-                    @{like.user.username}
+              {hasLiked && currentUser && (
+                <li className="list-group-item">
+                  {currentUser.firstName} {currentUser.lastName}
+                  <Link to={`/project/users/${currentUser._id}`}>
+                    @{currentUser.username}
                   </Link>
                 </li>
-              ))}
+              )}
+              {!hasLiked &&
+                likes &&
+                likes.map((like, index) => (
+                  <li key={index} className="list-group-item">
+                    {like.user.firstName} {like.user.lastName}
+                    <Link to={`/project/users/${like.user._id}`}>
+                      @{like.user.username}
+                    </Link>
+                  </li>
+                ))}
             </ul>
             <oi>
               <ul className="list-group-item">

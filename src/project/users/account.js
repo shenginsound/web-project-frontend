@@ -8,12 +8,21 @@ import * as client from "../client";
 function Account() {
   const [user, setUser] = useState(null);
   const [likes, setLikes] = useState(null);
+  const [titles, setTitles] = useState([]);
   const navigate = useNavigate();
 
   const fetchUser = async () => {
     try {
       const user = await userClient.account();
       setUser(user);
+      const likes = await likesClient.findMoviesThatUserLikes(user._id);
+      setLikes(likes);
+      const titlesArray = [];
+      for (let i = 0; i < likes.length; i++) {
+        const title = await client.findMovieById(likes[i].imdbID);
+        titlesArray.push(title);
+      }
+      setTitles(titlesArray);
     } catch (error) {
       navigate("/project/signin");
     }
@@ -22,6 +31,14 @@ function Account() {
   const signout = async () => {
     const status = await userClient.signout();
     navigate("/project/signin");
+  };
+
+  const deleteLike = async (userId, imdbID) => {
+    await likesClient.deleteUserLikesMovie(userId, imdbID);
+    const _likes = await likesClient.findUsersThatLikeMovie(imdbID);
+    const _titles = await client.findMovieById(imdbID);
+    setTitles(_titles);
+    setLikes(_likes);
   };
 
   const formatDate = (dob) => {
@@ -51,7 +68,24 @@ function Account() {
           <p className="mb-2">Date of Birth: {formatDate(user.dob)}</p>
           <p className="mb-2">Email: {user.email}</p>
           <p className="mb-2">Role: {user.role}</p>
-
+          <h3>Likes</h3>
+          <ul className="list-group">
+            {titles &&
+              titles.length > 0 &&
+              titles.map((title, index) => (
+                <li key={index} className="list-group-item">
+                  <Link to={`/project/searchMovieDetails/${title.imdbID}`}>
+                    <strong>{title.Title}</strong>
+                  </Link>
+                  <button
+                    onClick={() => deleteLike(user._id, title.imdbID)}
+                    className="btn btn-danger float-end"
+                  >
+                    Delete
+                  </button>
+                </li>
+              ))}
+          </ul>
           <Link to="/project/user/edit" className="btn btn-primary w-100 mb-2">
             Edit
           </Link>
