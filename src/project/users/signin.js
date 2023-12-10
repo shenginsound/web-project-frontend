@@ -2,37 +2,36 @@ import * as client from "./client";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function Signin() {
-  const [error, setError] = useState("");
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
   const navigate = useNavigate();
   const signin = async () => {
-    try {
-      await client.signin(user);
-      navigate("/project/account");
-    } catch (err) {
-      setError(err.response.data.message);
-    }
+    await client.signin(credentials);
+    navigate("/project/user");
   };
-
   return (
-    <div className="w-50">
+    <div>
       <h1>Signin</h1>
-      {error && <div className="alert alert-danger">{error}</div>}
       <input
-        value={user.username}
-        onChange={(e) => setUser({ ...user, username: e.target.value })}
-        placeholder="username"
-        className="form-control mb-2"
+        className="me-2"
+        value={credentials.username}
+        onChange={(e) =>
+          setCredentials({ ...credentials, username: e.target.value })
+        }
       />
       <input
-        value={user.password}
-        onChange={(e) => setUser({ ...user, password: e.target.value })}
+        className="me-2"
         type="password"
-        placeholder="password"
-        className="form-control mb-2"
+        value={credentials.password}
+        onChange={(e) =>
+          setCredentials({ ...credentials, password: e.target.value })
+        }
       />
-      <button onClick={signin} className="btn btn-primary w-100">
-        Signin
+      <button className="btn btn-primary me-2" onClick={signin}>
+        {" "}
+        Signin{" "}
       </button>
     </div>
   );

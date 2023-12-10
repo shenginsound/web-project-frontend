@@ -1,81 +1,105 @@
-import * as client from "./client";
 import { useState, useEffect } from "react";
-import { useNavigate, Link,  useParams } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
+import { FaUserEdit } from "react-icons/fa";
+import * as userClient from "./client";
+import * as likesClient from "../likes/client";
+import * as client from "../client";
+
 function Account() {
-  const { id } = useParams();
-  const [account, setAccount] = useState(null);
-  const findUserById = async (id) => {
-    const user = await client.findUserById(id);
-    setAccount(user);
-  };
-
+  const [user, setUser] = useState(null);
+  const [likes, setLikes] = useState(null);
+  const [titles, setTitles] = useState([]);
   const navigate = useNavigate();
-  const fetchAccount = async () => {
-    const account = await client.account();
-    setAccount(account);
-  };
 
-  const save = async () => {
-    await client.updateUser(account);
+  const fetchUser = async () => {
+    try {
+      const user = await userClient.account();
+      setUser(user);
+      const likes = await likesClient.findMoviesThatUserLikes(user._id);
+      setLikes(likes);
+      const titlesArray = [];
+      for (let i = 0; i < likes.length; i++) {
+        const title = await client.findMovieById(likes[i].imdbID);
+        titlesArray.push(title);
+      }
+      setTitles(titlesArray);
+    } catch (error) {
+      navigate("/project/signin");
+    }
   };
 
   const signout = async () => {
-    await client.signout();
+    const status = await userClient.signout();
     navigate("/project/signin");
   };
 
+  const deleteLike = async (userId, imdbID) => {
+    await likesClient.deleteUserLikesMovie(userId, imdbID);
+    const _likes = await likesClient.findUsersThatLikeMovie(imdbID);
+    const _titles = await client.findMovieById(imdbID);
+    setTitles(_titles);
+    setLikes(_likes);
+  };
+
+  const formatDate = (dob) => {
+    const parsedDate = new Date(dob);
+    const formattedDate = `${parsedDate.getFullYear()}-${String(
+      parsedDate.getMonth() + 1
+    ).padStart(2, "0")}-${String(parsedDate.getDate()).padStart(2, "0")}`;
+    return formattedDate;
+  };
 
   useEffect(() => {
-    if (id) {
-        findUserById(id);
-      } else {
-        fetchAccount();
-      }
-  
+    fetchUser();
   }, []);
-  
 
-  
   return (
     <div className="w-50">
       <h1>Account</h1>
-      {account && (
+      {user && (
         <div>
-          <input className="form-control mb-2" value={account.password}
-            onChange={(e) => setAccount({ ...account,
-              password: e.target.value })}/>
-          <input  className="form-control mb-2" value={account.firstName}
-            onChange={(e) => setAccount({ ...account,
-              firstName: e.target.value })}/>
-          <input className="form-control mb-2" value={account.lastName}
-            onChange={(e) => setAccount({ ...account,
-              lastName: e.target.value })}/>
-          <input type="date" className="form-control mb-2" value={account.dob}
-            onChange={(e) => setAccount({ ...account,
-              dob: e.target.value })}/>
-          <input type="email"  className="form-control mb-2" value={account.email}
-            onChange={(e) => setAccount({ ...account,
-              email: e.target.value })}/>
-          <select className="form-control mb-2" onChange={(e) => setAccount({ ...account,
-              role: e.target.value })}>
-            <option value="USER">User</option>
-            <option value="ADMIN">Admin</option>
-            <option value="FACULTY">Faculty</option>
-            <option value="STUDENT">Student</option>
-          </select>
-          <button onClick={save} className="btn btn-primary w-100 mb-2">
-            Save
+          <div className="d-flex align-items-center mb-2">
+            <FaUserEdit size={100} className="me-2" />
 
-
-          </button>
+            <p className="mb-0">
+              {user.firstName} {user.lastName}
+            </p>
+          </div>
+          <p className="mb-2">Date of Birth: {formatDate(user.dob)}</p>
+          <p className="mb-2">Email: {user.email}</p>
+          <p className="mb-2">Role: {user.role}</p>
+          <h3>Likes</h3>
+          <ul className="list-group">
+            {titles &&
+              titles.length > 0 &&
+              titles.map((title, index) => (
+                <li key={index} className="list-group-item">
+                  <Link to={`/project/searchMovieDetails/${title.imdbID}`}>
+                    <strong>{title.Title}</strong>
+                  </Link>
+                  <button
+                    onClick={() => deleteLike(user._id, title.imdbID)}
+                    className="btn btn-danger float-end"
+                  >
+                    Delete
+                  </button>
+                </li>
+              ))}
+          </ul>
+          <Link to="/project/user/edit" className="btn btn-primary w-100 mb-2">
+            Edit
+          </Link>
+          {user.role === "ADMIN" && (
+            <Link
+              to="/project/admin/users"
+              className="btn btn-warning w-100 mb-2"
+            >
+              Manage Users
+            </Link>
+          )}
           <button onClick={signout} className="btn btn-danger w-100 mb-2">
             Signout
           </button>
-          {account.role === "ADMIN" && (
-            <Link to="/project/admin/users" className="btn btn-warning w-100">
-              Users
-            </Link>
-          )}
         </div>
       )}
     </div>
