@@ -30,7 +30,7 @@ function Project(){
 
         <div className="container-fluid" >
               <Container fluid >
-              <Navbar fixed="top" className="bg-body-tertiary" expand="lg" data-bs-theme="light">
+              <Navbar sticky="top" className="bg-body-tertiary" expand="lg" data-bs-theme="light">
                 <Navbar.Brand>
 
                         <Link to="/" className="brand-link">
