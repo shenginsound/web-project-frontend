@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_BASE = "http://localhost:4000/api";
+const API_BASE = process.env.REACT_APP_BASE_API_URL;
 
-const USERS_API = `${API_BASE}/users`;
-const LIKES_API = `${API_BASE}/likes`;
+const USERS_API = `${API_BASE}/api/users`;
+const LIKES_API = `${API_BASE}/api/likes`;
 
 export const findAllLikes = async () => {};
 export const createUserLikesMovie = async (userId, imdbID) => {
