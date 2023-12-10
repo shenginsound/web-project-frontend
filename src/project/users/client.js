@@ -45,8 +45,14 @@ export const account = async () => {
     return response.data;
   };
   
+  export const findUsersByRole = async (role) => {
+    const response = await request.get(`${USERS_API}/role/${role}`);
+    return response.data;
+  };
   
-  
-  
+  export const users = async () => {
+    const response = await request.get(`${USERS_API}`);
+    return response.data;
+  };
   
   
