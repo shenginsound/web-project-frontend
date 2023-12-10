@@ -14,8 +14,10 @@ import Signin from "./users/signin";
 import Account from "./users/account";
 import UserTable from "./users/table";
 import Signup from "./users/signup";
+import { Navbar, Nav, NavDropdown, Container} from "react-bootstrap";
 
 import SearchMovieDetails from "./searchMovieDetails";
+// import "./style.css"
 // import UserList from "./users/list";
 // import UserDetails from "./users/details";
 // import SignIn from "./users/signin";
@@ -24,60 +26,50 @@ import SearchMovieDetails from "./searchMovieDetails";
 
 function Project(){
     return(
-        <div className="container-fluid">
-            <h1>Project</h1>
-            <div className="row">
-            <div className="col-2">
-                <div className="list-group">
-                <Link to="/project/" className="list-group-item">
+
+
+        <div className="container-fluid" >
+              <Container fluid >
+              <Navbar fixed="top" className="bg-body-tertiary" expand="lg" data-bs-theme="light">
+                <Navbar.Brand>
+
+                        <Link to="/" className="brand-link">
+                        <img
+              src={require("./img/logo.png")}
+              height = "100"
+              className="d-inline-block flex-grow"
+              alt="React Bootstrap logo"
+            />
+                        </Link>
+
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav ">
+                    <Nav className="ms-auto">
+
+                        <Nav.Link as={Link} to="/project/" className="nav-Link">
               Home
-            </Link>
-            {/* <Link to="/project/signin" className="list-group-item">
-              Signin
-            </Link> */}
-            {/* <Link to="/project/signup" className="list-group-item">
-              Signup
-            </Link> */}
-            {/* <Link to="/project/account" className="list-group-item">
-              Account
-            </Link> */}
-            <Link to="/project/search" className="list-group-item">
+            </Nav.Link>
+
+            <Nav.Link as={Link} to="/project/searchMovie" className="nav-Link">
               Search
-            </Link>
-            <Link to="/project/map" className="list-group-item">
-              SportsMap
-            </Link>
-            <Link to="/project/searchWeather" className="list-group-item">
-              searchWeather
-            </Link>
-            <Link to="/project/searchWeatherDetails" className="list-group-item">
-              searchWeatherDetails
-            </Link>
-            <Link to="/project/signin" className="list-group-item">
+            </Nav.Link>
+
+            <Nav.Link as={Link} to="/project/signin" className="nav-link">
               Signin
-            </Link>
-            <Link to="/project/signup" className="list-group-item">
+            </Nav.Link>
+            <Nav.Link as={Link} to="/project/signup" className="nav-link">
               SignUp
-            </Link>
-            <Link to="/project/admin/users" className="list-group-item">
-              UserTable</Link>
-            <Link to="/project/account" className="list-group-item">
+            </Nav.Link>
+            <Nav.Link as={Link} to="/project/account" className="nav-link">
               Account
-            </Link>
-            <Link to="/project/searchMovie" className="list-group-item">
-              searchMovie
-            </Link>
-            {/* <Link to="/project/searchMovieDetails" className="list-group-item">
-              searchMovieDetails
-            </Link> */}
-            {/* <Link to="/project/users" className="list-group-item">
-              Users
-            </Link> */}
-                </div>
-        
-        
-        </div>
-        <div className="col-10">
+            </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>     
+              </Container>
+
+
         <Routes>
             <Route path="/" element ={<Home/>} ></Route>;
             <Route path="/profile" element ={<Profile/>} ></Route>;
@@ -90,8 +82,8 @@ function Project(){
             <Route path="/account" element={<Account />} ></Route>;
             <Route path="/account/:id" element={<Account />} />
             <Route path="/details" element ={<Details/>} ></Route>;
-            <Route path="/map" element ={<SportsMap/>} ></Route>;
-            <Route path="/searchWeather" element ={<SearchWeather/>} ></Route>;
+            {/* <Route path="/map" element ={<SportsMap/>} ></Route>; */}
+            {/* <Route path="/searchWeather" element ={<SearchWeather/>} ></Route>; */}
             {/* <Route path="/searchWeatherDetails/" element ={<SearchWeatherDetails/>} ></Route>; */}
             <Route path="/searchMovie" element ={<SearchMovie/>} ></Route>;
             <Route path="/searchMovieDetails/:imdbID" element ={<SearchMovieDetails/>} ></Route>;
@@ -100,8 +92,7 @@ function Project(){
 
         </div>
 
-    </div>
-        </div>
+
         
     );
     
