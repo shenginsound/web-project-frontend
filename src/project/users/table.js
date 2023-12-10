@@ -155,7 +155,7 @@ function UserTable() {
                   <BsTrash3Fill onClick={() => deleteUser(user)} />
                 </button>
                 <button className="btn btn-warning me-2">
-                    <BsPencil onClick={() => selectUser(user)} />
+                  <BsPencil onClick={() => selectUser(user)} />
                 </button>
                 <BsArrowRight
                   onClick={() => navigate(`/project/account/${user._id}`)}
