@@ -20,6 +20,7 @@ export const findUsersThatLikeMovie = async (imdbID) => {
 };
 export const findMoviesThatUserLikes = async (userId) => {
   const response = await axios.get(`${USERS_API}/${userId}/likes`);
+  
   return response.data;
 };
 export const hasUserLikedMovie = async (userId, imdbID) => {

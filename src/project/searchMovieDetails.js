@@ -128,6 +128,8 @@ function SearchMovieDetails() {
                   <Link to={`/project/users/${currentUser._id}`}>
                     @{currentUser.username}
                   </Link>
+                  
+                  {currentUser._id}
                 </li>
               )}
               {!hasLiked &&

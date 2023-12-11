@@ -54,7 +54,7 @@ function Account() {
   }, []);
 
   return (
-    <div className="w-50">
+    <div className="w-50 ms-5">
       <h1>Account</h1>
       {user && (
         <div>
@@ -68,7 +68,7 @@ function Account() {
           <p className="mb-2">Date of Birth: {formatDate(user.dob)}</p>
           <p className="mb-2">Email: {user.email}</p>
           <p className="mb-2">Role: {user.role}</p>
-          <h3>Likes</h3>
+          <h4>The Movies You Likes: </h4>
           <ul className="list-group">
             {titles &&
               titles.length > 0 &&
@@ -86,7 +86,7 @@ function Account() {
                 </li>
               ))}
           </ul>
-          <Link to="/project/user/edit" className="btn btn-primary w-100 mb-2">
+          <Link to="/project/user/edit" className="btn btn-primary w-50 mb-2">
             Edit
           </Link>
           {user.role === "ADMIN" && (
@@ -97,7 +97,7 @@ function Account() {
               Manage Users
             </Link>
           )}
-          <button onClick={signout} className="btn btn-danger w-100 mb-2">
+          <button onClick={signout} className="btn btn-danger w-50 mb-2 me-2">
             Signout
           </button>
         </div>
