@@ -47,7 +47,7 @@ function Signin() {
             height: '100vh'
             ,position: 'relative'
             } } >
-    <div className="bg-light container rounded d-flex flex-column  w-25 position-absolute top-50 start-50 translate-middle border border-light">
+    <div className="shadow-lg bg-light container rounded d-flex flex-column  w-25 position-absolute top-50 start-50 translate-middle border border-light">
       
       <h1 class="mt-3 mx-auto">Signin</h1>
   
