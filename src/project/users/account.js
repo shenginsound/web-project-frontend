@@ -15,6 +15,7 @@ function Account() {
     try {
       const user = await userClient.account();
       setUser(user);
+      console.log(user._id)
       const likes = await likesClient.findMoviesThatUserLikes(user._id);
       if (likes){
         setLikes(likes);
