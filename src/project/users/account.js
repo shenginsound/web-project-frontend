@@ -16,13 +16,22 @@ function Account() {
       const user = await userClient.account();
       setUser(user);
       const likes = await likesClient.findMoviesThatUserLikes(user._id);
-      setLikes(likes);
-      const titlesArray = [];
-      for (let i = 0; i < likes.length; i++) {
-        const title = await client.findMovieById(likes[i].imdbID);
-        titlesArray.push(title);
-      }
-      setTitles(titlesArray);
+      if (likes){
+        setLikes(likes);
+        const titlesArray = [];
+        for (let i = 0; i < likes.length; i++) {
+          const title = await client.findMovieById(likes[i].imdbID);
+          if(title){
+            titlesArray.push(title);
+          }
+          if(titlesArray){
+            setTitles(titlesArray);
+          };
+    
+      };
+      };
+
+
     } catch (error) {
       navigate("/project/signin");
     }
