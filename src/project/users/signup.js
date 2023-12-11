@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as client from "./client";
+import background from "../img/sign_bg.jpeg"; 
 function Signup() {
   const [error, setError] = useState("");
   const [user, setUser] = useState({ username: "", password: "" });
@@ -14,7 +15,17 @@ function Signup() {
     }
   };
   return (
-    <div className="container rounded d-flex flex-column  w-25 position-absolute top-50 start-50 translate-middle border border-dark">
+
+          <div style={{ 
+            backgroundImage: `url(${background})`,         
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            width: '100vw',
+            height: '100vh'
+            ,position: 'relative'
+            } } >
+    <div className="bg-light container rounded d-flex flex-column  w-25 position-absolute top-50 start-50 translate-middle border border-light">
       
       <h1 class="mt-3 mx-auto">Signup</h1>
       {error && <div className="alert alert-danger">{error}</div>}
@@ -39,7 +50,7 @@ function Signup() {
         className="form-control mb-2"
       />
       <div class="mx-auto mb-3">
-      <button onClick={signup} className="mx-auto mt-3 btn btn-primary w-50">
+      <button onClick={signup} className="mx-auto mt-3 btn btn-primary w-100">
         Signup
       </button>
       </div>
@@ -47,6 +58,7 @@ function Signup() {
       </div>
 
     </div>
+            </div>
   );
 }
 export default Signup;
