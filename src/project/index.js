@@ -12,7 +12,7 @@ import SearchMovieDetails from "./searchMovieDetails";
 
 function Project() {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid px-0">
       <Container fluid>
         <Navbar
           sticky="top"
