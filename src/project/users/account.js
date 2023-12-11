@@ -62,7 +62,7 @@ function Account() {
             <FaUserEdit size={100} className="me-2" />
 
             <p className="mb-0">
-              {user.firstName} {user.lastName}
+              {user.firstName} {user.lastName} {user._id}
             </p>
           </div>
           <p className="mb-2">Date of Birth: {formatDate(user.dob)}</p>
@@ -92,7 +92,7 @@ function Account() {
           {user.role === "ADMIN" && (
             <Link
               to="/project/admin/users"
-              className="btn btn-warning w-100 mb-2"
+              className="btn btn-warning w-100 mb-3"
             >
               Manage Users
             </Link>
