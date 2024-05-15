@@ -25,7 +25,7 @@ function SearchMovie() {
 
   return (
     <div>
-      <h1 style={{ color: "gray" }}>Search Movie to See the Rates</h1>
+      <h2 style={{ color: "gray" }}>Search the Movie </h2>
 
       <div className="out-container">
       <input
@@ -45,10 +45,12 @@ function SearchMovie() {
         Search
       </button>
       </div>
+      <br></br>
+      
       {results &&
-        (<h3 >The general information of the Movie</h3>)
+        (<h4 >The general information of the Movie</h4>)
       }
-      <ul className="list-group w-60">
+      <ul className="list-group w-60 list-color">
         {results && (
           <oi className="list-group-item">
             <Link to={`/project/searchMovieDetails/${results.imdbID}`}>
