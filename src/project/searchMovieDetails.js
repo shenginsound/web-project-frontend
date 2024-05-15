@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import * as client from "./client";
 import "./poster.css";
+import "./search.css"
 import * as userClient from "./users/client";
 import * as likesClient from "./likes/client";
 import { Link } from "react-router-dom";

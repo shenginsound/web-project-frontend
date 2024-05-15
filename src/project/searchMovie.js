@@ -32,7 +32,7 @@ function SearchMovie() {
         type="text"
         placeholder="Please type the Movie Title you want to search"
         style = {{ width: "75px" }}
-        className="form-control w-75"
+        className="form-control w-60"
         value={searchTerm}
         onChange={(event) => {
           setSearchTerm(event.target.value);
@@ -46,18 +46,21 @@ function SearchMovie() {
       </button>
       </div>
       <br></br>
-      
+
+
       {results &&
         (<h4 >The general information of the Movie</h4>)
       }
+      
       <ul className="list-group w-60 list-color">
         {results && (
-          <oi className="list-group-item">
+          <oi className="list-group-item list-color">
             <Link to={`/project/searchMovieDetails/${results.imdbID}`}>
               {results.Title}
             </Link>{" "}
           </oi>
         )}
+        <div className="out-container">
         {results && (
           <img
             src={results.Poster}
@@ -65,7 +68,7 @@ function SearchMovie() {
             className="poster-img"
           />
         )}
-
+        <>
         {results && <oi className="list-group-item list-color"> The Year the movie comes out: {results.Year}</oi>}
         {results && (
           <oi className="list-group-item list-color"> The Rated to the movie : {results.Rated}</oi>
@@ -79,6 +82,12 @@ function SearchMovie() {
         {results && (
           <oi className="list-group-item list-color"> The Genre of the movie: {results.Genre}</oi>
         )}
+        </>
+        
+        </div>
+        
+
+        
       </ul>
     </div>
   );
