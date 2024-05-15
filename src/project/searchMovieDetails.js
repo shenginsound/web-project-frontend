@@ -92,6 +92,9 @@ function SearchMovieDetails() {
                     />
                     <div className="col-5">
                       <ul className="list-group">
+                      <oi className="list-group-item list-color" style = {{color: "red"}}>
+                         Awards : {movieDetails.Awards}
+                         </oi>
                       <oi className="list-group-item list-color">
                         The Year: {movieDetails.Year}
                          </oi>
@@ -113,21 +116,33 @@ function SearchMovieDetails() {
                          <oi className="list-group-item list-color">
                          Director : {movieDetails.Director}
                          </oi>
-                         <oi>
+                         <oi className="list-group-item list-color">
                          Writer : {movieDetails.Writer}
                          </oi>
-                         <oi>
+                         <oi className="list-group-item list-color">
                          Plot : {movieDetails.Plot}
                          </oi>
-                         <oi>
+                         <oi className="list-group-item list-color">
                          Language : {movieDetails.Language}
                          </oi>
-                         <oi>
+                         <oi className="list-group-item list-color">
                          Country : {movieDetails.Country}
                          </oi>
-                         <oi style = {{color: "red"}}>
-                         Awards : {movieDetails.Awards}
-                         </oi>
+                         <oi>
+                          <ul className="list-group-item">
+                            {" "}
+                            <h4>Movie Rating :</h4>
+                            {movieDetails &&
+                              movieDetails.Ratings.map((rating, index) => (
+                                <li key={index} className="list-group-item">
+                                  <h5>
+                                    {index + 1}. {rating.Source} : {rating.Value}
+                                  </h5>
+                                </li>
+                              ))}
+                          </ul>
+                        </oi>
+                         
                       </ul>
                     </div>
                   </div>
