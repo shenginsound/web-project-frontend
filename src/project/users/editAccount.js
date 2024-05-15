@@ -37,7 +37,7 @@ function EditAccount() {
       <h1>Account</h1>
       {account && (
         <div>
-          <>password</>
+          <h6 className="ms-3 md-3 mt-3">password</h6>
           <input
             className="form-control mb-2"
             value={account.password}
@@ -45,6 +45,7 @@ function EditAccount() {
               setAccount({ ...account, password: e.target.value })
             }
           />
+          <h6 className="ms-3 md-3 mt-3">First Name</h6>
           <input
             className="form-control mb-2"
             value={account.firstName}
@@ -52,6 +53,7 @@ function EditAccount() {
               setAccount({ ...account, firstName: e.target.value })
             }
           />
+          <h6 className="ms-3 md-3 mt-3">Last Name</h6>
           <input
             className="form-control mb-2"
             value={account.lastName}
@@ -59,18 +61,21 @@ function EditAccount() {
               setAccount({ ...account, lastName: e.target.value })
             }
           />
+          <h6 className="ms-3 md-3 mt-3">Birthday</h6>
           <input
             type="date"
             className="form-control mb-2"
             value={account.dob}
             onChange={(e) => setAccount({ ...account, dob: e.target.value })}
           />
+          <h6 className="ms-3 md-3 mt-3">Email</h6>
           <input
             type="email"
             className="form-control mb-2"
             value={account.email}
             onChange={(e) => setAccount({ ...account, email: e.target.value })}
           />
+          <h6 className="ms-3 md-3 mt-3">Role</h6>
           <select
             className="form-control mb-2"
             value={account.role}
@@ -81,10 +86,10 @@ function EditAccount() {
             <option value="FACULTY">Faculty</option>
             <option value="STUDENT">Student</option>
           </select>
-          <button onClick={save} className="btn btn-primary w-100 mb-2">
+          <button onClick={save} className="btn btn-primary w-50 mb-2">
             Save
           </button>
-          <Link to="/project/user" className="btn btn-danger w-100 mb-2">
+          <Link to="/project/user" className="btn btn-danger w-50 mb-2">
             Back
           </Link>
         </div>
