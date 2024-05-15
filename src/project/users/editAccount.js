@@ -37,7 +37,7 @@ function EditAccount() {
       <h1>Account</h1>
       {account && (
         <div>
-          <h6 className="ms-3 md-3 mt-3">password</h6>
+          <h5 className="ms-3 md-3 mt-3">password</h5>
           <input
             className="form-control mb-2"
             value={account.password}
@@ -45,7 +45,7 @@ function EditAccount() {
               setAccount({ ...account, password: e.target.value })
             }
           />
-          <h6 className="ms-3 md-3 mt-3">First Name</h6>
+          <h5 className="ms-3 md-3 mt-3">First Name</h5>
           <input
             className="form-control mb-2"
             value={account.firstName}
@@ -53,7 +53,7 @@ function EditAccount() {
               setAccount({ ...account, firstName: e.target.value })
             }
           />
-          <h6 className="ms-3 md-3 mt-3">Last Name</h6>
+          <h5 className="ms-3 md-3 mt-3">Last Name</h5>
           <input
             className="form-control mb-2"
             value={account.lastName}
@@ -61,21 +61,21 @@ function EditAccount() {
               setAccount({ ...account, lastName: e.target.value })
             }
           />
-          <h6 className="ms-3 md-3 mt-3">Birthday</h6>
+          <h5 className="ms-3 md-3 mt-3">Birthday</h5>
           <input
             type="date"
             className="form-control mb-2"
             value={account.dob}
             onChange={(e) => setAccount({ ...account, dob: e.target.value })}
           />
-          <h6 className="ms-3 md-3 mt-3">Email</h6>
+          <h5 className="ms-3 md-3 mt-3">Email</h5>
           <input
             type="email"
             className="form-control mb-2"
             value={account.email}
             onChange={(e) => setAccount({ ...account, email: e.target.value })}
           />
-          <h6 className="ms-3 md-3 mt-3">Role</h6>
+          <h5 className="ms-3 md-3 mt-3">Role</h5>
           <select
             className="form-control mb-2"
             value={account.role}
