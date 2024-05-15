@@ -79,7 +79,7 @@ function SearchMovieDetails() {
               )}
             </>
           )}
-          <h1>{movieDetails.Title}</h1>
+          <h1 className="ms-3 mb-3">Movie :{movieDetails.Title}</h1>
           <ul className="list-group w-75">
             {movieDetails && (
               <oi className="list-group-item">
