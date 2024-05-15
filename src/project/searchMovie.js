@@ -1,6 +1,7 @@
 import * as client from "./client.js";
 import React, { useState, useEffect } from "react";
 import "./poster.css";
+import "./search.css";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -23,7 +24,8 @@ function SearchMovie() {
   }, [search]);
 
   return (
-    <div>
+    <div className="out-container">
+
       <h1 style={{ color: "gray" }}>SearchMovie</h1>
       <button
         onClick={() => navigate(`/project/search/${searchTerm}`)}
@@ -31,11 +33,12 @@ function SearchMovie() {
       >
         Search
       </button>
-
+    
       <input
         type="text"
         placeholder="Please type the Movie Title you want to search"
-        className="form-control w-60"
+        style = {{ width: "75px" }}
+        className="form-control w-75"
         value={searchTerm}
         onChange={(event) => {
           setSearchTerm(event.target.value);
