@@ -128,6 +128,20 @@ function SearchMovieDetails() {
                          <oi className="list-group-item list-color">
                          Country : {movieDetails.Country}
                          </oi>
+                         <oi>
+                        <ul className="list-group-item">
+                          {" "}
+                          <h4>Movie Rating :</h4>
+                          {movieDetails &&
+                            movieDetails.Ratings.map((rating, index) => (
+                              <li key={index} className="list-group-item">
+                                <h5>
+                                  {index + 1}. {rating.Source} : {rating.Value}
+                                </h5>
+                              </li>
+                            ))}
+                        </ul>
+                      </oi>
                          
                       </ul>
                     </div>
