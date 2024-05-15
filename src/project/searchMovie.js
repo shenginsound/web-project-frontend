@@ -24,16 +24,10 @@ function SearchMovie() {
   }, [search]);
 
   return (
-    <div className="out-container">
+    <div>
+      <h1 style={{ color: "gray" }}>Search Movie to See the Rates</h1>
 
-      <h1 style={{ color: "gray" }}>SearchMovie</h1>
-      <button
-        onClick={() => navigate(`/project/search/${searchTerm}`)}
-        className="btn btn-primary ms-3"
-      >
-        Search
-      </button>
-    
+      <div className="out-container">
       <input
         type="text"
         placeholder="Please type the Movie Title you want to search"
@@ -44,7 +38,16 @@ function SearchMovie() {
           setSearchTerm(event.target.value);
         }}
       />
-      <h2 >Results</h2>
+      <button
+        onClick={() => navigate(`/project/search/${searchTerm}`)}
+        className="btn btn-primary ms-3"
+      >
+        Search
+      </button>
+      </div>
+      {results &&
+        (<h3 >The general information of the Movie</h3>)
+      }
       <ul className="list-group w-60">
         {results && (
           <oi className="list-group-item">
@@ -61,18 +64,18 @@ function SearchMovie() {
           />
         )}
 
-        {results && <oi className="list-group-item"> Year : {results.Year}</oi>}
+        {results && <oi className="list-group-item list-color"> The Year the movie comes out: {results.Year}</oi>}
         {results && (
-          <oi className="list-group-item"> Rated : {results.Rated}</oi>
+          <oi className="list-group-item list-color"> The Rated to the movie : {results.Rated}</oi>
         )}
         {results && (
-          <oi className="list-group-item"> Realeased : {results.Released}</oi>
+          <oi className="list-group-item list-color"> The Realeased Date: {results.Released}</oi>
         )}
         {results && (
-          <oi className="list-group-item"> Runtime : {results.Runtime}</oi>
+          <oi className="list-group-item list-color"> How long the Runtime is : {results.Runtime}</oi>
         )}
         {results && (
-          <oi className="list-group-item"> Genre : {results.Genre}</oi>
+          <oi className="list-group-item list-color"> The Genre of the movie: {results.Genre}</oi>
         )}
       </ul>
     </div>

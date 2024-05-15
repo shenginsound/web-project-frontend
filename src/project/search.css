@@ -2,7 +2,9 @@
     /* width: 50%;
     height: 70%; */
     display: flex;
-    
 
-
+}
+.list-color{
+    background-color: beige;
+    color: burlywood;
 }
