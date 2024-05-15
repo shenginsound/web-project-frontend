@@ -46,7 +46,7 @@ function SearchMovie() {
         {results && (
           <oi className="list-group-item">
             <Link to={`/project/searchMovieDetails/${results.imdbID}`}>
-              Title : {results.Title}
+              {results.Title}
             </Link>{" "}
           </oi>
         )}
