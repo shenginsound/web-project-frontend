@@ -37,6 +37,7 @@ function EditAccount() {
       <h1>Account</h1>
       {account && (
         <div>
+          <>password</>
           <input
             className="form-control mb-2"
             value={account.password}
