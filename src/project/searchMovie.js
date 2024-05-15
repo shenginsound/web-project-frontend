@@ -31,7 +31,7 @@ function SearchMovie() {
       <input
         type="text"
         placeholder="Please type the Movie Title you want to search"
-        style = {{ width: "75px" }}
+        style = {{ width: "300px" }}
         className="form-control w-60"
         value={searchTerm}
         onChange={(event) => {

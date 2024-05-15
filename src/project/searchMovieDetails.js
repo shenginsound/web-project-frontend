@@ -91,31 +91,44 @@ function SearchMovieDetails() {
                       className="poster-img col-7"
                     />
                     <div className="col-5">
-                      Year : {movieDetails.Year}
-                      <br></br>
-                      Rated : {movieDetails.Rated}
-                      <br></br>
-                      Realeased : {movieDetails.Released}
-                      <br></br>
-                      Runtime : {movieDetails.Runtime}
-                      <br></br>
-                      Genre : {movieDetails.Genre}
-                      <br></br>
-                      Actors : {movieDetails.Actors}
-                      <br></br>
-                      Director : {movieDetails.Director}
-                      <br></br>
-                      Writer : {movieDetails.Writer}
-                      <br></br>
-                      Writer : {movieDetails.Writer}
-                      <br></br>
-                      Plot : {movieDetails.Plot}
-                      <br></br>
-                      Language : {movieDetails.Language}
-                      <br></br>
-                      Country : {movieDetails.Country}
-                      <br></br>
-                      Awards : {movieDetails.Awards}
+                      <ul className="list-group">
+                      <oi className="list-group-item list-color">
+                        The Year: {movieDetails.Year}
+                         </oi>
+                         <oi className="list-group-item list-color">
+                         Rated : {movieDetails.Rated}
+                         </oi>
+                         <oi className="list-group-item list-color">
+                         Realeased : {movieDetails.Released}
+                         </oi>
+                         <oi className="list-group-item list-color">
+                           Runtime : {movieDetails.Runtime}
+                         </oi>
+                         <oi className="list-group-item list-color">
+                         Genre : {movieDetails.Genre}
+                         </oi>
+                         <oi className="list-group-item list-color">
+                         Actors : {movieDetails.Actors}
+                         </oi>
+                         <oi className="list-group-item list-color">
+                         Director : {movieDetails.Director}
+                         </oi>
+                         <oi>
+                         Writer : {movieDetails.Writer}
+                         </oi>
+                         <oi>
+                         Plot : {movieDetails.Plot}
+                         </oi>
+                         <oi>
+                         Language : {movieDetails.Language}
+                         </oi>
+                         <oi>
+                         Country : {movieDetails.Country}
+                         </oi>
+                         <oi style = {{color: "red"}}>
+                         Awards : {movieDetails.Awards}
+                         </oi>
+                      </ul>
                     </div>
                   </div>
                 )}
