@@ -1,7 +1,6 @@
 import * as client from "./client.js";
 import React, { useState, useEffect } from "react";
 import "./poster.css";
-import "../style.css";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
