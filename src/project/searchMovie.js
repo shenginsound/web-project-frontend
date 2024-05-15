@@ -69,6 +69,7 @@ function SearchMovie() {
           />
         )}
         <>
+        <ul className="list-group w-60 list-color">
         {results && <oi className="list-group-item list-color"> The Year the movie comes out: {results.Year}</oi>}
         {results && (
           <oi className="list-group-item list-color"> The Rated to the movie : {results.Rated}</oi>
@@ -82,6 +83,7 @@ function SearchMovie() {
         {results && (
           <oi className="list-group-item list-color"> The Genre of the movie: {results.Genre}</oi>
         )}
+        </ul>
         </>
         
         </div>
