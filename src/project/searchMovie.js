@@ -1,6 +1,7 @@
 import * as client from "./client.js";
 import React, { useState, useEffect } from "react";
 import "./poster.css";
+import "../style.css";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -24,25 +25,25 @@ function SearchMovie() {
 
   return (
     <div>
-      <h1>SearchMovie</h1>
+      <h1 style={{ color: "gray" }}>SearchMovie</h1>
       <button
         onClick={() => navigate(`/project/search/${searchTerm}`)}
-        className="btn btn-primary float-end"
+        className="btn btn-primary ms-3"
       >
         Search
       </button>
 
       <input
         type="text"
-        placeholder="Search by Title"
-        className="form-control w-75"
+        placeholder="Please type the Movie Title you want to search"
+        className="form-control w-60"
         value={searchTerm}
         onChange={(event) => {
           setSearchTerm(event.target.value);
         }}
       />
-      <h2>Results</h2>
-      <ul className="list-group w-75">
+      <h2 >Results</h2>
+      <ul className="list-group w-60">
         {results && (
           <oi className="list-group-item">
             <Link to={`/project/searchMovieDetails/${results.imdbID}`}>
